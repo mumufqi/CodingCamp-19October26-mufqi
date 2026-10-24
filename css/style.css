@@ -1,0 +1,509 @@
+/* =============================================================
+   Theme tokens — shared by every widget and interactive control
+   Requirements: 9.2, 9.3
+   ============================================================= */
+
+:root {
+  --color-bg: #f5f5f5;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-primary: #4f6ef7;
+  --color-border: #d1d5db;
+  --color-error: #dc2626;
+  --color-action: #405bd8;
+  --color-action-hover: #344bbb;
+  --color-action-active: #2b3fa1;
+  --color-on-action: #ffffff;
+  --color-selection: #eef2ff;
+  --color-danger: #b91c1c;
+  --color-danger-hover: #fef2f2;
+  color-scheme: light;
+}
+
+:root.theme-dark,
+body.theme-dark {
+  --color-bg: #111827;
+  --color-surface: #1f2937;
+  --color-text: #f3f4f6;
+  --color-primary: #818cf8;
+  --color-border: #374151;
+  --color-error: #f87171;
+  --color-action: #818cf8;
+  --color-action-hover: #a5b4fc;
+  --color-action-active: #747ee8;
+  --color-on-action: #111827;
+  --color-selection: #303552;
+  --color-danger: #f87171;
+  --color-danger-hover: #3f232c;
+  color-scheme: dark;
+}
+
+/* Reset, readable type, and shared controls */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+button,
+input {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.4rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  line-height: 1.5;
+}
+
+button {
+  min-width: 44px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-bg);
+}
+
+button:active:not(:disabled) {
+  border-color: var(--color-text);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button:focus,
+input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+input {
+  caret-color: var(--color-primary);
+}
+
+input::placeholder {
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+/* Primary actions: starting, adding tasks, and saving pending changes. */
+#timer-start-btn,
+#todo-add-btn,
+#greeting-save-btn,
+#todo-retry-save,
+.todo-save-btn {
+  border-color: var(--color-action);
+  background: var(--color-action);
+  color: var(--color-on-action);
+  font-weight: 600;
+}
+
+:is(#timer-start-btn, #todo-add-btn, #greeting-save-btn, #todo-retry-save, .todo-save-btn):hover:not(:disabled) {
+  border-color: var(--color-action-hover);
+  background: var(--color-action-hover);
+}
+
+:is(#timer-start-btn, #todo-add-btn, #greeting-save-btn, #todo-retry-save, .todo-save-btn):active:not(:disabled) {
+  border-color: var(--color-action-active);
+  background: var(--color-action-active);
+}
+
+/* Link setup stays secondary to starting work and adding tasks. */
+#links-add-btn {
+  border-color: var(--color-action);
+  color: var(--color-action);
+  font-weight: 600;
+}
+
+#links-add-btn:hover:not(:disabled),
+#links-add-btn:active:not(:disabled) {
+  border-color: var(--color-action);
+  background: var(--color-bg);
+}
+
+/* Destructive actions use red accents with a quiet surface. */
+.todo-delete-btn,
+.quick-link-delete {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+:is(.todo-delete-btn, .quick-link-delete):hover:not(:disabled),
+:is(.todo-delete-btn, .quick-link-delete):active:not(:disabled) {
+  border-color: var(--color-danger);
+  background: var(--color-danger-hover);
+}
+
+/* Hierarchy: greeting, timer + tasks, then shortcuts. */
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-areas: "greeting greeting" "timer todo" "links links";
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+main > section {
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+#greeting-widget { grid-area: greeting; text-align: center; }
+#timer-widget { grid-area: timer; text-align: center; }
+#timer-widget h2 { margin-bottom: 1.25rem; }
+#todo-widget { grid-area: todo; }
+#links-widget { grid-area: links; }
+
+.greeting-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  text-align: start;
+}
+
+.app-status {
+  max-width: 1152px;
+  margin: 1rem auto 0;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+}
+
+.no-js #app-status { display: none; }
+html[data-app-state="loading"] main { opacity: 0.65; }
+
+/* Greeting */
+#greeting-clock {
+  margin-bottom: 0.25rem;
+  color: var(--color-primary);
+  font-size: 2.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+#greeting-date {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+#greeting-text {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  overflow-wrap: anywhere;
+}
+
+#greeting-text .greeting-name-bold {
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+#greeting-name-edit {
+  display: flex;
+  justify-content: center;
+  max-width: 36rem;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#greeting-name-input {
+  flex: 1 1 10rem;
+}
+
+/* To-Do form and normal/editing rows */
+#todo-add-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+#todo-list {
+  list-style: none;
+}
+
+#todo-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+#todo-list li:last-child {
+  border-bottom: none;
+}
+
+.todo-checkbox-target {
+  display: inline-flex;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.todo-checkbox-target:hover {
+  background: var(--color-bg);
+}
+
+.todo-checkbox-target input {
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+  padding: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.todo-task-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.todo-task-done .todo-task-text {
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+#todo-list .todo-empty-msg {
+  display: block;
+  padding: 0.5rem 0;
+  border: none;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+.todo-edit-input {
+  flex: 1 1 calc(100% - 52px);
+}
+
+/* Focus Timer */
+#timer-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#timer-modes button {
+  padding: 0.5rem 0.25rem;
+  border-width: 2px;
+  font-size: 0.875rem;
+}
+
+#timer-modes button[aria-pressed="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-selection);
+  font-weight: 700;
+}
+
+#timer-modes button span { display: block; font-size: 0.75rem; }
+#timer-mode-hint { margin-bottom: 0.75rem; font-size: 0.875rem; }
+
+#timer-phase {
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+#timer-display {
+  font-size: 3.75rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+#timer-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+#timer-notification {
+  display: none;
+}
+
+#timer-notification.timer-notification-visible {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: calc(100% - 3rem);
+  max-width: 30rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+#timer-notification > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.timer-notification-dismiss {
+  flex: 0 0 44px;
+  font-size: 1.25rem;
+}
+
+/* Quick Links */
+#links-add-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) auto;
+  gap: 0.5rem;
+}
+
+#links-url-hint {
+  grid-column: 1 / -1;
+  font-size: 0.875rem;
+}
+
+#links-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.quick-link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quick-link-button {
+  flex: 1;
+  min-width: 0;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+
+.quick-link-delete {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.quick-link-delete svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.links-empty-msg {
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+.storage-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.storage-notice:has(button:not([hidden])) { margin-bottom: 0.75rem; }
+.widget-error { margin-top: 0.75rem; text-align: start; }
+
+/* Shared inline errors keep their existing role="alert" semantics. */
+#theme-error,
+#todo-storage-error,
+.widget-error,
+#greeting-name-error,
+#todo-add-error,
+.todo-edit-error,
+#links-add-error {
+  flex-basis: 100%;
+  grid-column: 1 / -1;
+  width: 100%;
+  color: var(--color-error);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+[role="alert"]:empty {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  main {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "greeting" "timer" "todo" "links";
+    gap: 1rem;
+    padding: 1rem 1rem 2rem;
+  }
+
+  main > section {
+    padding: 1.25rem;
+  }
+
+  #links-add-form { grid-template-columns: minmax(0, 1fr) auto; }
+  #links-label-input { grid-column: 1 / -1; }
+  .app-status { margin: 1rem 1rem 0; }
+
+  #timer-notification.timer-notification-visible {
+    right: 1rem;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+  }
+}

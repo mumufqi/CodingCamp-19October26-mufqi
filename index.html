@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-app-state="loading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List Life Dashboard</title>
+    <script>
+      // Apply the theme before CSS paints, independently of the deferred app.
+      (function () {
+        const root = document.documentElement;
+        let theme = 'light';
+        try {
+          const saved = localStorage.getItem('dashboard_theme');
+          theme = saved === 'light' || saved === 'dark' ? saved
+            : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        } catch (_e) {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        root.classList.remove('no-js');
+        root.classList.add('theme-' + theme);
+        window.DashboardBoot = {
+          timeoutId: setTimeout(function () {
+            root.dataset.appState = 'error';
+            const status = document.getElementById('app-status');
+            if (status) {
+              status.hidden = false;
+              status.setAttribute('role', 'alert');
+              status.textContent = 'The dashboard is taking too long to load. Refresh the page to try again.';
+            }
+          }, 10000)
+        };
+      })();
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <div id="app-status" class="app-status" role="status">Loading your dashboard…</div>
+    <noscript><p class="app-status">Enable JavaScript, then refresh the page to use the dashboard.</p></noscript>
+
+    <main id="dashboard" inert aria-busy="true">
+
+      <!-- Greeting Widget -->
+      <section id="greeting-widget" aria-label="Welcome">
+        <header class="greeting-header">
+          <button id="theme-toggle" aria-label="Light theme active. Switch to dark theme" aria-pressed="false"><span id="theme-icon" aria-hidden="true">☀️</span> <span id="theme-label">Theme: Light</span></button>
+          <span id="theme-error" role="alert"></span>
+        </header>
+        <div id="greeting-clock">--:--</div>
+        <div id="greeting-date">-- --, ----</div>
+        <div id="greeting-text">Good morning, <strong id="greeting-name">Friend</strong>!</div>
+        <div id="greeting-name-edit">
+          <button id="greeting-edit-btn" aria-label="Edit name">✏️ Edit Name</button>
+          <input
+            id="greeting-name-input"
+            type="text"
+            maxlength="50"
+            placeholder="Enter your name"
+            hidden
+            aria-label="Your name"
+          />
+          <button id="greeting-save-btn" hidden>Save</button>
+          <button id="greeting-cancel-btn" hidden>Cancel</button>
+          <span id="greeting-name-error" role="alert"></span>
+        </div>
+      </section>
+
+      <!-- Focus Timer Widget -->
+      <section id="timer-widget">
+        <h2>Focus Timer</h2>
+        <div id="timer-modes" role="group" aria-label="Timer mode">
+          <button id="timer-mode-work" type="button" aria-pressed="true">Focus <span>25 min</span></button>
+          <button id="timer-mode-short" type="button" aria-pressed="false">Short Break <span>5 min</span></button>
+          <button id="timer-mode-long" type="button" aria-pressed="false">Long Break <span>15 min</span></button>
+        </div>
+        <p id="timer-mode-hint" hidden>Stop the timer to change modes.</p>
+        <div id="timer-phase">Work</div>
+        <div id="timer-display" aria-live="polite">25:00</div>
+        <div id="timer-controls">
+          <button id="timer-start-btn">Start</button>
+          <button id="timer-stop-btn">Stop</button>
+          <button id="timer-reset-btn">Reset</button>
+        </div>
+        <div id="timer-notification" role="alert" hidden></div>
+      </section>
+
+      <!-- To-Do List Widget -->
+      <section id="todo-widget">
+        <h2>To-Do List</h2>
+        <div id="todo-add-form">
+          <input
+            id="todo-input"
+            type="text"
+            maxlength="200"
+            placeholder="Add a new task…"
+            aria-label="New task text"
+          />
+          <button id="todo-add-btn">Add</button>
+          <div id="todo-add-error" role="alert"></div>
+        </div>
+        <div class="storage-notice">
+          <p id="todo-storage-error" role="alert"></p>
+          <button id="todo-retry-save" type="button" hidden>Retry saving</button>
+        </div>
+        <ul id="todo-list" aria-label="Task list"></ul>
+      </section>
+
+      <!-- Quick Links Widget -->
+      <section id="links-widget">
+        <h2>Quick Links</h2>
+        <div id="links-add-form">
+          <input
+            id="links-label-input"
+            type="text"
+            maxlength="50"
+            placeholder="Label"
+            aria-label="Link label"
+          />
+          <input
+            id="links-url-input"
+            type="url"
+            inputmode="url"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="example.com"
+            aria-label="Link URL"
+            aria-describedby="links-url-hint"
+          />
+          <button id="links-add-btn">Add Link</button>
+          <p id="links-url-hint">You can enter a domain; https:// is added automatically.</p>
+          <div id="links-add-error" role="alert"></div>
+        </div>
+        <div id="links-panel" aria-label="Saved links"></div>
+      </section>
+
+    </main>
+
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

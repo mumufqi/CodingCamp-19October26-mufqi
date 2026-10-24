@@ -1,0 +1,345 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create the root `index.html` with correct `<!DOCTYPE html>`, `<meta charset>`, `<meta name=\"viewport\">`, a `<link>` to `css/style.css`, and a `<script src=\"js/app.js\" defer>` tag at the end of `<body>`": [
+      {
+        "executionId": "146e7ad7-51bb-4b12-a751-27fc971c3826",
+        "chatSessionId": "sess_55d7f005-15cd-4b30-91a3-a061b72844d0",
+        "timestamp": 1792790535352
+      },
+      {
+        "executionId": "146e7ad7-51bb-4b12-a751-27fc971c3826",
+        "chatSessionId": "sess_55d7f005-15cd-4b30-91a3-a061b72844d0",
+        "timestamp": 1792790564482
+      }
+    ],
+    "1.2 Add semantic HTML sections inside `<body>`: a `<header>` containing the theme-toggle button, and four `<section>` elements with ids `greeting-widget`, `todo-widget`, `timer-widget`, and `links-widget`": [
+      {
+        "executionId": "146e7ad7-51bb-4b12-a751-27fc971c3826",
+        "chatSessionId": "sess_55d7f005-15cd-4b30-91a3-a061b72844d0",
+        "timestamp": 1792790568379
+      },
+      {
+        "executionId": "146e7ad7-51bb-4b12-a751-27fc971c3826",
+        "chatSessionId": "sess_55d7f005-15cd-4b30-91a3-a061b72844d0",
+        "timestamp": 1792790610021
+      }
+    ],
+    "1. Project scaffolding — file structure and HTML skeleton": [
+      {
+        "executionId": "146e7ad7-51bb-4b12-a751-27fc971c3826",
+        "chatSessionId": "sess_55d7f005-15cd-4b30-91a3-a061b72844d0",
+        "timestamp": 1792790610078
+      }
+    ],
+    "2. CSS foundation — custom properties, reset, and base layout": [
+      {
+        "executionId": "474dc605-11dd-4ac1-9ccf-e610ecc63dec",
+        "chatSessionId": "sess_a944dca5-1072-4b94-90d5-0c6e8e797b12",
+        "timestamp": 1792790709041
+      },
+      {
+        "executionId": "474dc605-11dd-4ac1-9ccf-e610ecc63dec",
+        "chatSessionId": "sess_a944dca5-1072-4b94-90d5-0c6e8e797b12",
+        "timestamp": 1792790756557
+      }
+    ],
+    "2.1 Define CSS custom properties for the light theme on `:root` (`--color-bg`, `--color-surface`, `--color-text`, `--color-primary`, `--color-border`, `--color-error`) and override them inside a `.theme-dark` selector on `body`": [
+      {
+        "executionId": "474dc605-11dd-4ac1-9ccf-e610ecc63dec",
+        "chatSessionId": "sess_a944dca5-1072-4b94-90d5-0c6e8e797b12",
+        "timestamp": 1792790746144
+      }
+    ],
+    "2.2 Write a minimal CSS reset (box-sizing, margin/padding zero on `*`) and global typography (`font-family`, `line-height`, `color` from `--color-text`, `background` from `--color-bg`)": [
+      {
+        "executionId": "474dc605-11dd-4ac1-9ccf-e610ecc63dec",
+        "chatSessionId": "sess_a944dca5-1072-4b94-90d5-0c6e8e797b12",
+        "timestamp": 1792790751479
+      },
+      {
+        "executionId": "2cad97b0-6ee6-4d8e-a890-1d07cccbc3ce",
+        "chatSessionId": "sess_d1b90dd3-266b-45a9-aed5-e65e9678ec92",
+        "timestamp": 1792790789136
+      },
+      {
+        "executionId": "2cad97b0-6ee6-4d8e-a890-1d07cccbc3ce",
+        "chatSessionId": "sess_d1b90dd3-266b-45a9-aed5-e65e9678ec92",
+        "timestamp": 1792790796226
+      }
+    ],
+    "2.3 Lay out the four widget sections using CSS Grid or Flexbox so they display in a readable two-column (desktop) / one-column (mobile) arrangement; add padding and a card-style surface (`--color-surface`, `--color-border`, `border-radius`) to each section": [
+      {
+        "executionId": "474dc605-11dd-4ac1-9ccf-e610ecc63dec",
+        "chatSessionId": "sess_a944dca5-1072-4b94-90d5-0c6e8e797b12",
+        "timestamp": 1792790756508
+      },
+      {
+        "executionId": "6023a92e-7dea-4c35-91b0-b934e48b239d",
+        "chatSessionId": "sess_e8d7b587-0d2f-4dd3-8500-c37a017ae0f5",
+        "timestamp": 1792790822149
+      },
+      {
+        "executionId": "6023a92e-7dea-4c35-91b0-b934e48b239d",
+        "chatSessionId": "sess_e8d7b587-0d2f-4dd3-8500-c37a017ae0f5",
+        "timestamp": 1792790836818
+      }
+    ],
+    "3.1 Implement `Theme` in `js/app.js`: the `STORAGE_KEY`, `current` property, `_getSaved()` (reads `localStorage`, falls back to `prefers-color-scheme`, then `'light'`), `apply(theme)` (adds `theme-light`/`theme-dark` class to `<body>`, updates toggle button label/icon), and `toggle()`": [
+      {
+        "executionId": "f1e0eb3c-8a01-4874-85d0-91d4a51670e3",
+        "chatSessionId": "sess_36fac42c-9389-45ca-8ddf-f1e35492dd7c",
+        "timestamp": 1792790868392
+      },
+      {
+        "executionId": "f1e0eb3c-8a01-4874-85d0-91d4a51670e3",
+        "chatSessionId": "sess_36fac42c-9389-45ca-8ddf-f1e35492dd7c",
+        "timestamp": 1792791818276
+      }
+    ],
+    "3. Theme module — toggle, persist, and prefers-color-scheme fallback": [
+      {
+        "executionId": "f1e0eb3c-8a01-4874-85d0-91d4a51670e3",
+        "chatSessionId": "sess_36fac42c-9389-45ca-8ddf-f1e35492dd7c",
+        "timestamp": 1792791818334
+      }
+    ],
+    "4.1 Implement `Greeting._getGreetingPhrase(hour)`: returns `\"Good Morning\"` for 5–11, `\"Good Afternoon\"` for 12–17, `\"Good Evening\"` for 18–23 and 0–4": [
+      {
+        "executionId": "f0e9bb66-8481-4d6f-a24e-16ad7b02fc17",
+        "chatSessionId": "sess_349639f9-223d-4490-ac4e-93aa7e85120f",
+        "timestamp": 1792791880080
+      },
+      {
+        "executionId": "f0e9bb66-8481-4d6f-a24e-16ad7b02fc17",
+        "chatSessionId": "sess_349639f9-223d-4490-ac4e-93aa7e85120f",
+        "timestamp": 1792792164275
+      }
+    ],
+    "4.3 Implement `Greeting._renderClock()` (formats `Date` → `HH:MM`, writes to DOM, falls back to `\"--:--\"`), `_renderDate()` (formats full day/date/month/year string, falls back to `\"-- --, ----\"`), and `_renderGreeting()` (uses `_getGreetingPhrase` + stored name, renders name in `<strong>` with the larger font size)": [
+      {
+        "executionId": "f0e9bb66-8481-4d6f-a24e-16ad7b02fc17",
+        "chatSessionId": "sess_349639f9-223d-4490-ac4e-93aa7e85120f",
+        "timestamp": 1792792187638
+      },
+      {
+        "executionId": "f0e9bb66-8481-4d6f-a24e-16ad7b02fc17",
+        "chatSessionId": "sess_349639f9-223d-4490-ac4e-93aa7e85120f",
+        "timestamp": 1792792193053
+      }
+    ],
+    "4.4 Implement `Greeting._tick()` (called every second via `setInterval(1000)`; updates clock and re-renders greeting only when the displayed minute changes), `_loadName()` (reads `localStorage`, returns stored name or `'Friend'`), `_saveName(name)` (validates ≤ 50 chars, writes to `localStorage`, returns bool), and `_bindNameEdit()` (wires edit button and input)": [
+      {
+        "executionId": "f0e9bb66-8481-4d6f-a24e-16ad7b02fc17",
+        "chatSessionId": "sess_349639f9-223d-4490-ac4e-93aa7e85120f",
+        "timestamp": 1792792199670
+      },
+      {
+        "executionId": "f0e9bb66-8481-4d6f-a24e-16ad7b02fc17",
+        "chatSessionId": "sess_349639f9-223d-4490-ac4e-93aa7e85120f",
+        "timestamp": 1792792203612
+      }
+    ],
+    "4. Greeting module — live clock, date display, and time-of-day greeting": [
+      {
+        "executionId": "f0e9bb66-8481-4d6f-a24e-16ad7b02fc17",
+        "chatSessionId": "sess_349639f9-223d-4490-ac4e-93aa7e85120f",
+        "timestamp": 1792792203664
+      }
+    ],
+    "5.1 Implement `TodoList` data layer: `STORAGE_KEY`, `MAX_TASKS = 100`, `MAX_CHARS = 200`, `tasks = []`, `_loadTasks()` (parses JSON from `localStorage`, returns `[]` on error), `_saveTasks()` (serialises `tasks` to `localStorage`)": [
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792330278
+      },
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792375680
+      }
+    ],
+    "5.2 Implement `TodoList.addTask(text)`: trim input, reject empty/whitespace (show error, keep input focused), reject if `tasks.length >= MAX_TASKS` (show limit message, disable Add button), otherwise push task, save, and re-render within 100 ms": [
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792381766
+      },
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792789663
+      }
+    ],
+    "5.6 Implement `TodoList._renderTask(task, index)` (returns a `<li>` with checkbox, text span, Edit button, Delete button) and `_renderList()` (clears and rebuilds the `<ul>`)": [
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792796980
+      },
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792857604
+      },
+      {
+        "executionId": "d1b531be-24c6-435d-bf88-788447b2fdb5",
+        "chatSessionId": "sess_349a67d3-332d-4ee7-94c2-25d3a45e88c3",
+        "timestamp": 1792793381444
+      },
+      {
+        "executionId": "d1b531be-24c6-435d-bf88-788447b2fdb5",
+        "chatSessionId": "sess_349a67d3-332d-4ee7-94c2-25d3a45e88c3",
+        "timestamp": 1792793398564
+      }
+    ],
+    "5.7 Implement `TodoList.toggleComplete(id)` (flips `done`, saves, re-renders within 100 ms) and `deleteTask(id)` (splices array, saves, re-renders within 200 ms, no confirmation prompt)": [
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792862927
+      },
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792895517
+      }
+    ],
+    "5.8 Implement `TodoList.startEdit(id)` (replaces `<li>` text span with an inline `<input>` pre-filled with current text), `saveEdit(id, newText)` (validates 1–200 non-whitespace chars, updates task, saves, re-renders within 200 ms; on failure restores original text and shows error), and `cancelEdit(id)` (re-renders without change)": [
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792901711
+      },
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792970696
+      }
+    ],
+    "5. To-Do List module — add, render, complete, edit, delete, and persist": [
+      {
+        "executionId": "f93e2b2b-be83-4742-8544-f921cdc4f3ed",
+        "chatSessionId": "sess_bc35490d-33e0-4fca-b696-b23b79c52b41",
+        "timestamp": 1792792970793
+      }
+    ],
+    "6. Checkpoint — verify Greeting and To-Do List": [
+      {
+        "executionId": "9d5b8c73-052f-4b24-93e3-bc53b45861a4",
+        "chatSessionId": "sess_cf6a0c86-b487-400e-a68d-c2f2886c578e",
+        "timestamp": 1792793513718
+      },
+      {
+        "executionId": "9d5b8c73-052f-4b24-93e3-bc53b45861a4",
+        "chatSessionId": "sess_cf6a0c86-b487-400e-a68d-c2f2886c578e",
+        "timestamp": 1792793597210
+      }
+    ],
+    "7.1 Implement `FocusTimer._formatTime(seconds)`: zero-pads minutes and seconds, returns `\"MM:SS\"` string": [
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792793648154
+      },
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792793831456
+      }
+    ],
+    "7.3 Implement `FocusTimer` state: `DURATIONS`, `state` object (`phase`, `remaining`, `running`, `completedPomodoros`), `_advancePhase()` (work → short → long → work cycle per Requirement 5 rules, increments/resets `completedPomodoros`)": [
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792793835425
+      },
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792793917923
+      }
+    ],
+    "7.5 Implement `FocusTimer.start()` (sets `running = true`, starts `setInterval(1000)`, disables Start button), `stop()` (clears interval, sets `running = false`, enables Start button — does NOT increment `completedPomodoros`), `reset()` (clears interval, restores full duration for current phase, re-renders, does NOT advance phase)": [
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792793926148
+      },
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792794046268
+      }
+    ],
+    "7.6 Implement `FocusTimer._tick()` (decrements `remaining`; on zero calls `_onSessionEnd()`), `_onSessionEnd()` (calls `_playBeep()`, `_showNotification()`, `_advancePhase()`, then waits for user to press Start), `_updateDisplay()` (writes phase label + `_formatTime(remaining)` to DOM every second), and `_updateButtons()` (enables/disables Start, Stop, Reset per running state)": [
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792794053103
+      },
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792794187627
+      }
+    ],
+    "7.7 Implement `FocusTimer._playBeep()` using `AudioContext` oscillator (single 440 Hz beep, ~300 ms); wrap everything in `try/catch` so audio errors are silent. Implement `_showNotification(msg)` (renders a dismissible on-screen alert; auto-dismisses after 10 s via `setTimeout`) and `_dismissNotification()`": [
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792794058653
+      },
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792794193567
+      }
+    ],
+    "7. Focus Timer module — Pomodoro state machine, controls, display, and notification": [
+      {
+        "executionId": "5ac5f724-e1ba-4b9c-b827-3294f627b4f4",
+        "chatSessionId": "sess_a70f59e5-8c7e-4c46-986a-434b056df76b",
+        "timestamp": 1792794193634
+      }
+    ],
+    "8.1 Implement `QuickLinks._validateUrl(url)`: returns `true` if and only if `url` starts with `\"http://\"` or `\"https://\"`": [
+      {
+        "executionId": "b5423abd-1f6c-4a99-ba34-2956be29cd76",
+        "chatSessionId": "sess_9c77e81a-41bc-4669-8af0-fad6f9f121e3",
+        "timestamp": 1792794689266
+      },
+      {
+        "executionId": "b5423abd-1f6c-4a99-ba34-2956be29cd76",
+        "chatSessionId": "sess_9c77e81a-41bc-4669-8af0-fad6f9f121e3",
+        "timestamp": 1792794733431
+      }
+    ],
+    "8.3 Implement `QuickLinks` data layer: `STORAGE_KEY`, `LABEL_MAX_LEN = 50`, `links = []`, `_loadLinks()`, `_saveLinks()`": [
+      {
+        "executionId": "b5423abd-1f6c-4a99-ba34-2956be29cd76",
+        "chatSessionId": "sess_9c77e81a-41bc-4669-8af0-fad6f9f121e3",
+        "timestamp": 1792794739484
+      },
+      {
+        "executionId": "b5423abd-1f6c-4a99-ba34-2956be29cd76",
+        "chatSessionId": "sess_9c77e81a-41bc-4669-8af0-fad6f9f121e3",
+        "timestamp": 1792794786081
+      }
+    ],
+    "8.4 Implement `QuickLinks.addLink(label, url)`: reject empty label or empty URL (silently, per Requirement 7.6), reject invalid URL scheme (show error `\"URL must start with http:// or https://\"`), otherwise push link, save, re-render": [
+      {
+        "executionId": "b5423abd-1f6c-4a99-ba34-2956be29cd76",
+        "chatSessionId": "sess_9c77e81a-41bc-4669-8af0-fad6f9f121e3",
+        "timestamp": 1792794790727
+      }
+    ],
+    "12. Final checkpoint — cross-browser smoke test": [
+      {
+        "executionId": "47a0c42a-eaaa-4c7d-96ed-6940d31d8ecb",
+        "chatSessionId": "sess_3bb4d078-0f69-4079-ab2d-309ad3e60b35",
+        "timestamp": 1792798208019
+      }
+    ]
+  }
+}
